@@ -325,7 +325,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 213844aa828fd48fb8f2f972b518e9ca, type: 2}
+  - {fileID: 2100000, guid: ea9dff104bbd34a76b7e839509268e72, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1025,6 +1025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+  cameraHeight: 0.5
   playerCamera: {fileID: 963194225}
 --- !u!138 &1340939034
 FixedJoint:

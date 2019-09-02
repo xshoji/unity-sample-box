@@ -5,6 +5,7 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     public float speed = 0.1f;
+    public float cameraHeight = 0.5f;
     public GameObject playerCamera;
     private Rigidbody rb;
     //> unity - How to use Input.GetAxis("Mouse X/Y") to rotate the camera? - Game Development Stack Exchange  
@@ -16,7 +17,7 @@ public class Move : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        playerCamera.transform.position = rb.transform.position + new Vector3(0, 0.5f, 0);
+        playerCamera.transform.position = rb.transform.position + new Vector3(0, cameraHeight, 0);
         yaw = playerCamera.transform.rotation.x;
         pitch = playerCamera.transform.rotation.y;
     }
@@ -64,10 +65,10 @@ public class Move : MonoBehaviour
             //> http://chungames.hateblo.jp/entry/2016/07/31/201807
             // Calculate body position.
             rb.position += playerCamera.transform.forward * vec.z + playerCamera.transform.right * vec.x;
-
-            // Set camera position.
-            playerCamera.transform.position = rb.transform.position + new Vector3(0, 0.5f, 0);
         }
+
+        // Set camera position.
+        playerCamera.transform.position = rb.transform.position + new Vector3(0, cameraHeight, 0);
 
         //Vector3 directionVector = playerCamera.transform.position - transform.position;
         //Debug.Log("direction:" + directionVector + ", vec:" + vec);
