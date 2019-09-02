@@ -33,6 +33,7 @@ public class Move : MonoBehaviour
         yaw += Input.GetAxis("Mouse X") * 10f;
         pitch -= Input.GetAxis("Mouse Y") * 10f;
         playerCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        rb.transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
     }
 
     private void movePosition()
