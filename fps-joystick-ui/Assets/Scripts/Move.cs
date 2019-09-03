@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public float speed = 0.1f;
+    public float speed = 0.25f;
     public float cameraHeight = 0.5f;
     public GameObject playerCamera;
+    public VariableJoystick variableJoystick;
+    public DynamicJoystick dynamicJoystick;
     private Rigidbody rb;
     //> unity - How to use Input.GetAxis("Mouse X/Y") to rotate the camera? - Game Development Stack Exchange  
     //> https://gamedev.stackexchange.com/questions/104693/how-to-use-input-getaxismouse-x-y-to-rotate-the-camera
@@ -25,61 +27,32 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        movePosition();
         rotateView();
+        movePosition();
     }
 
     private void rotateView()
     {
-        yaw += Input.GetAxis("Mouse X") * 10f;
-        pitch -= Input.GetAxis("Mouse Y") * 10f;
+        yaw += dynamicJoystick.Horizontal * 10f;
+        pitch -= dynamicJoystick.Vertical * 10f;
         playerCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
         rb.transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
     }
 
     private void movePosition()
     {
-        Vector3 now = rb.position;            // 座標を取得
-        Vector3 vec = new Vector3();
-        if (Input.GetKey("w"))
-        {
-            vec += new Vector3(0.0f, 0.0f, speed);  // 前に少しずつ移動するように加算
-        }
-        if (Input.GetKey("a"))
-        {
-            vec += new Vector3(-speed, 0.0f, 0.0f);  // 前に少しずつ移動するように加算
-        }
-        if (Input.GetKey("s"))
-        {
-            vec += new Vector3(0.0f, 0.0f, -speed);  // 前に少しずつ移動するように加算
-        }
-        if (Input.GetKey("d"))
-        {
-            vec += new Vector3(speed, 0.0f, 0.0f);  // 前に少しずつ移動するように加算
-        }
+        Vector3 directionVector = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
 
-        //Debug.Log("vec:" + vec);
-        if (vec != Vector3.zero)
+        //Debug.Log("directionVector:" + directionVector);
+        if (directionVector != Vector3.zero)
         {
             //> Unity初心者でも簡単に作れるFPSカメラの作り方 - あさちゅんのゲームブログ
             //> http://chungames.hateblo.jp/entry/2016/07/31/201807
             // Calculate body position.
-            rb.position += playerCamera.transform.forward * vec.z + playerCamera.transform.right * vec.x;
+            rb.position += playerCamera.transform.forward * directionVector.z * speed + playerCamera.transform.right * directionVector.x * speed;
         }
 
         // Set camera position.
         playerCamera.transform.position = rb.transform.position + new Vector3(0, cameraHeight, 0);
-
-        //Vector3 directionVector = playerCamera.transform.position - transform.position;
-        //Debug.Log("direction:" + directionVector + ", vec:" + vec);
-        //if (vec != Vector3.zero && directionVector != Vector3.zero) {
-        //    var resultVector = Quaternion.LookRotation(directionVector) * vec;
-        //    resultVector = new Vector3(resultVector.x, 0.0f, resultVector.y);
-        //    Debug.Log("resultVector:" + resultVector);
-        //    now += resultVector;
-        //    rb.position = now; // 値を設定
-        //}
-
-
     }
 }

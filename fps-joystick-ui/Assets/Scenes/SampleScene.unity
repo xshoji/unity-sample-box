@@ -255,7 +255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23750001, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.1000061, y: 0}
+  m_AnchoredPosition: {x: 1.1000366, y: 0}
   m_SizeDelta: {x: -2.2000122, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286762841
@@ -1171,6 +1171,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041579994}
   m_CullTransparentMesh: 0
+--- !u!114 &1198279732 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8135886326569738823, guid: 56fae09712773584fb63896d473a98ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 1508722898}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0d0e7a039f526499c356a3c5cd6d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1239972728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1526,8 @@ MonoBehaviour:
   speed: 0.1
   cameraHeight: 0.5
   playerCamera: {fileID: 963194225}
+  variableJoystick: {fileID: 2095907759}
+  dynamicJoystick: {fileID: 1198279732}
 --- !u!138 &1340939034
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -1797,3 +1811,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1021644991}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2095907759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3881087803549984439, guid: ec536a7718376554185e4a856d5ae230,
+    type: 3}
+  m_PrefabInstance: {fileID: 1021644991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42844a4fccbd54746b90cade4ff70f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
