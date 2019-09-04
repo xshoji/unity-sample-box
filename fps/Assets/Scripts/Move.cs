@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public float speed = 0.1f;
+    public float moveSpeed = 0.1f;
+    public float viewSpeed = 10.0f;
+    public float viewAngleRange = 45.0f;
     public float cameraHeight = 0.5f;
     public GameObject playerCamera;
     private Rigidbody rb;
@@ -31,8 +33,14 @@ public class Move : MonoBehaviour
 
     private void rotateView()
     {
-        yaw += Input.GetAxis("Mouse X") * 10f;
-        pitch -= Input.GetAxis("Mouse Y") * 10f;
+        yaw += Input.GetAxis("Mouse X") * viewSpeed;
+        pitch -= Input.GetAxis("Mouse Y") * viewSpeed;
+        //> Clamping a wrapping rotation. - Unity Answers
+        //> https://answers.unity.com/questions/227736/clamping-a-wrapping-rotation.html
+        if (pitch > viewAngleRange || pitch < -viewAngleRange)
+        {
+            pitch = Mathf.Clamp(pitch, -viewAngleRange, viewAngleRange);
+        }
         playerCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
         rb.transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
     }
@@ -43,19 +51,19 @@ public class Move : MonoBehaviour
         Vector3 vec = new Vector3();
         if (Input.GetKey("w"))
         {
-            vec += new Vector3(0.0f, 0.0f, speed);  // 前に少しずつ移動するように加算
+            vec += new Vector3(0.0f, 0.0f, moveSpeed);  // 前に少しずつ移動するように加算
         }
         if (Input.GetKey("a"))
         {
-            vec += new Vector3(-speed, 0.0f, 0.0f);  // 前に少しずつ移動するように加算
+            vec += new Vector3(-moveSpeed, 0.0f, 0.0f);  // 前に少しずつ移動するように加算
         }
         if (Input.GetKey("s"))
         {
-            vec += new Vector3(0.0f, 0.0f, -speed);  // 前に少しずつ移動するように加算
+            vec += new Vector3(0.0f, 0.0f, -moveSpeed);  // 前に少しずつ移動するように加算
         }
         if (Input.GetKey("d"))
         {
-            vec += new Vector3(speed, 0.0f, 0.0f);  // 前に少しずつ移動するように加算
+            vec += new Vector3(moveSpeed, 0.0f, 0.0f);  // 前に少しずつ移動するように加算
         }
 
         //Debug.Log("vec:" + vec);
@@ -69,17 +77,6 @@ public class Move : MonoBehaviour
 
         // Set camera position.
         playerCamera.transform.position = rb.transform.position + new Vector3(0, cameraHeight, 0);
-
-        //Vector3 directionVector = playerCamera.transform.position - transform.position;
-        //Debug.Log("direction:" + directionVector + ", vec:" + vec);
-        //if (vec != Vector3.zero && directionVector != Vector3.zero) {
-        //    var resultVector = Quaternion.LookRotation(directionVector) * vec;
-        //    resultVector = new Vector3(resultVector.x, 0.0f, resultVector.y);
-        //    Debug.Log("resultVector:" + resultVector);
-        //    now += resultVector;
-        //    rb.position = now; // 値を設定
-        //}
-
 
     }
 }
