@@ -1,6 +1,6 @@
-# standard-assets-tps
+# standard-assets-forest
 
-standard-assets-tps
+standard-assets-forest
 
 # Requirement
 
@@ -30,11 +30,3 @@ Need to put following assets to `Assets/ExternalAssets` directory.
 ## FreeLookCameraRig
 
  - キャラがでかすぎたりしてカメラと近くなりすぎるとカメラがキャラに吸い込まれる現象が発生するので注意
- - 吸い込まれる現象は
-   - `ProtectCameraFromWallClip.clipMoveTime`の値を大きくする
-   - `ProtectCameraFromWallClip.closestDistance`（カメラとターゲットの最も近い距離）の値を大きくする（5とかにする）
-   - とマシになる
- - カメラとキャラの距離は
-   - `FreeLookCameraRig`の中にあるPivotの位置
-   - `FreeLockCam.MoveSpeed`をはやくする
-   - を調整すればOK
