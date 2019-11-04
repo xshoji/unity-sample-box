@@ -8,6 +8,12 @@ standard-assets-tps
 
 # Dependencies
 
+Need to copy common assets.
+
+```
+cp -R ../self-making-common-assets/mantype1 Assets/ExternalAssets/
+```
+
 Need to put following assets to `Assets/ExternalAssets` directory.
 
 > Standard Assets - Asset Store  
@@ -25,7 +31,7 @@ Need to put following assets to `Assets/ExternalAssets` directory.
  - キャラがずっと空中に浮き続けてるみたいなアクションになった場合は
    - Capsule Colliderの形状をキャラと一致させて
    - ThirdPersonUserControlの`Ground check distance`を大きめの値にする
- 
+
 
 ## FreeLookCameraRig
 
