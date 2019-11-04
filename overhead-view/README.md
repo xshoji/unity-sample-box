@@ -8,6 +8,12 @@ overhead-view
 
 # Dependencies
 
+Need to copy common assets.
+
+```
+cp -R ../self-making-common-assets/mantype1 Assets/ExternalAssets/
+```
+
 Need to put following assets to `Assets/ExternalAssets` directory.
 
 > Standard Assets - Asset Store  

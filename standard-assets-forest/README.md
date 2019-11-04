@@ -8,6 +8,12 @@ standard-assets-forest
 
 # Dependencies
 
+Need to copy common assets.
+
+```
+cp -R ../self-making-common-assets/mantype2 Assets/ExternalAssets/
+```
+
 Need to put following assets to `Assets/ExternalAssets` directory.
 
 > Standard Assets - Asset Store  
