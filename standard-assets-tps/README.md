@@ -44,3 +44,12 @@ Need to put following assets to `Assets/ExternalAssets` directory.
    - `FreeLookCameraRig`の中にあるPivotの位置
    - `FreeLockCam.MoveSpeed`をはやくする
    - を調整すればOK
+
+# FAQ
+
+## missing prefab
+
+> How to add a prefab back to a gameobject that is missing one? - Unity Answers  
+> https://answers.unity.com/questions/353021/how-to-add-a-prefab-back-to-a-gameobject-that-is-m.html
+
+You should fix guid of target object in the Scene yaml file manually.
